@@ -1,0 +1,13 @@
+.card {
+  position: relative;
+  overflow: hidden;
+  background: white;
+  border: 1px solid #e3e8df;
+  border-radius: 24px;
+  box-shadow: 0 12px 45px -20px #29402e2b, 0 3px 10px -6px #29402e12;
+}
+.content { padding: 31px 35px 26px; }
+@media (max-width: 480px) {
+  .card { border-radius: 20px; }
+  .content { padding: 24px 22px; }
+}
