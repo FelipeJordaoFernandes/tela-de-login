@@ -1,10 +1,12 @@
 import { useCallback, useState } from 'react'
 import { Leaf } from 'lucide-react'
 import { Link, useLocation } from 'react-router-dom'
-import { MotionConfig } from 'motion/react'
+import { LazyMotion, MotionConfig } from 'motion/react'
 import AnimatedCard from '../AnimatedCard/AnimatedCard'
 import Broto from '../Broto/Broto'
 import styles from './AuthLayout.module.css'
+
+const loadMotionFeatures = () => import('../../lib/motionFeatures').then((module) => module.default)
 
 export default function AuthLayout() {
   const { pathname } = useLocation()
@@ -14,6 +16,7 @@ export default function AuthLayout() {
 
   return (
     <MotionConfig reducedMotion="user">
+      <LazyMotion features={loadMotionFeatures} strict>
       <div className={styles.shell}>
         <a className={styles.skipLink} href="#conteudo">Pular para o conteúdo</a>
         <header className={styles.header}>
@@ -33,6 +36,7 @@ export default function AuthLayout() {
           <p className={styles.demoLabel}><span aria-hidden="true" /> Projeto de portfólio · Acesso local</p>
         </footer>
       </div>
+      </LazyMotion>
     </MotionConfig>
   )
 }

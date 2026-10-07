@@ -1,5 +1,6 @@
 import { useCallback, useRef, useState } from 'react'
-import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
+import { AnimatePresence, useReducedMotion } from 'motion/react'
+import * as m from 'motion/react-m'
 import { useLocation, useOutlet } from 'react-router-dom'
 import styles from './AnimatedCard.module.css'
 
@@ -24,11 +25,11 @@ export default function AnimatedCard({ outletContext }) {
   }, [])
 
   return (
-    <motion.div id="auth-card" className={styles.card} initial={false}
+    <m.div id="auth-card" className={styles.card} initial={false}
       animate={{ height: height ?? 'auto' }}
       transition={{ duration: reduceMotion ? 0 : 0.42, ease: [0.22, 1, 0.36, 1] }}>
       <AnimatePresence initial={false} mode="wait" custom={direction}>
-        <motion.div key={pathname} custom={direction} ref={observeContent}
+        <m.div key={pathname} custom={direction} ref={observeContent}
           className={styles.content}
           variants={{ enter: (side) => ({ opacity: 0, x: reduceMotion ? 0 : side * 45 }),
             center: { opacity: 1, x: 0 },
@@ -42,8 +43,8 @@ export default function AnimatedCard({ outletContext }) {
             }
           }}>
           {outlet}
-        </motion.div>
+        </m.div>
       </AnimatePresence>
-    </motion.div>
+    </m.div>
   )
 }

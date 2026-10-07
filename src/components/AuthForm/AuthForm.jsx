@@ -1,6 +1,7 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, useSyncExternalStore } from 'react'
 import { ArrowRight, CheckCircle2, Info, LogOut } from 'lucide-react'
-import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
+import { AnimatePresence, useReducedMotion } from 'motion/react'
+import * as m from 'motion/react-m'
 import { Link, NavLink, useLocation, useNavigate, useOutletContext } from 'react-router-dom'
 import FormField from '../FormField/FormField'
 import { validateAuth } from '../../lib/validation'
@@ -8,8 +9,13 @@ import { LocalAuthError, loginLocalAccount, registerLocalAccount } from '../../l
 import styles from './AuthForm.module.css'
 
 const emptyValues = { name: '', email: '', password: '', confirmPassword: '' }
+const subscribeToHydration = () => () => {}
+const clientReady = () => true
+const serverNotReady = () => false
 
 export default function AuthForm({ mode }) {
+  // HTML público não envia credenciais antes de o fluxo local estar disponível.
+  const hydrated = useSyncExternalStore(subscribeToHydration, clientReady, serverNotReady)
   const isRegister = mode === 'register'
   const location = useLocation()
   const navigate = useNavigate()
@@ -102,7 +108,7 @@ export default function AuthForm({ mode }) {
 
   return (
     <AnimatePresence mode="wait" initial={false}>
-      <motion.section key={user ? 'welcome' : 'form'} aria-labelledby="page-title"
+      <m.section key={user ? 'welcome' : 'form'} aria-labelledby="page-title"
         initial={{ opacity: 0, x: reduceMotion ? 0 : 35 }} animate={{ opacity: 1, x: 0 }}
         exit={{ opacity: 0, x: reduceMotion ? 0 : -35 }}
         transition={{ duration: reduceMotion ? 0 : .24, ease: [0.22, 1, 0.36, 1] }}
@@ -131,8 +137,8 @@ export default function AuthForm({ mode }) {
               <p>{isRegister ? 'Preencha seus dados para começar.' : 'Entre com seu e-mail e senha para continuar.'}</p>
             </div>
             {registrationNotice && <p className={styles.notice} role="status">Conta criada neste navegador. Agora é só entrar!</p>}
-            <form ref={formRef} onSubmit={handleSubmit} noValidate className={styles.form} aria-busy={busy}>
-              <fieldset className={styles.fields} disabled={busy}>
+            <form ref={formRef} onSubmit={handleSubmit} method="post" noValidate className={styles.form} aria-busy={busy}>
+              <fieldset className={styles.fields} disabled={busy || !hydrated}>
                 {isRegister && <FormField id="name" label="Nome" placeholder="Seu nome"
                   autoComplete="name" maxLength={100} required value={values.name} onChange={handleChange} error={errors.name} onInteract={onReaction} />}
                 <FormField id="email" label="E-mail" type="email" placeholder="voce@exemplo.com"
@@ -147,7 +153,7 @@ export default function AuthForm({ mode }) {
                   error={errors.confirmPassword} onInteract={onReaction} />}
               </fieldset>
               <p className={styles.formError} role="alert">{message}</p>
-              <button type="submit" disabled={busy} className={styles.submit}>
+              <button type="submit" disabled={busy || !hydrated} className={styles.submit}>
                 {busy ? 'Só um instante…' : isRegister ? 'Criar minha conta' : 'Entrar'}
                 {!busy && <ArrowRight size={17} aria-hidden="true" />}
               </button>
@@ -161,7 +167,7 @@ export default function AuthForm({ mode }) {
             </div>
           </>
         )}
-      </motion.section>
+      </m.section>
     </AnimatePresence>
   )
 }

@@ -10,7 +10,11 @@ function RouteFocus() {
 
   useEffect(() => {
     const titles = { '/': 'Entrar', '/login': 'Entrar', '/cadastro': 'Criar conta' }
-    document.title = `${titles[pathname] || 'Página não encontrada'} | Acesso`
+    const route = pathname.replace(/\/+$/, '') || '/'
+    const knownRoute = Object.hasOwn(titles, route)
+    document.title = `${titles[route] || 'Página não encontrada'} | Acesso`
+    document.querySelector('meta[name="robots"]')?.setAttribute('content', knownRoute ? 'index, follow' : 'noindex, follow')
+    document.querySelector('link[rel="canonical"]')?.setAttribute('href', `https://tela-de-login-jet-seven.vercel.app${route === '/cadastro' ? '/cadastro' : '/login'}`)
     if (previousPath.current !== pathname) {
       window.scrollTo({ top: 0, behavior: 'instant' })
       previousPath.current = pathname
@@ -19,9 +23,9 @@ function RouteFocus() {
   return null
 }
 
-export default function App() {
+export function AppRoutes() {
   return (
-    <BrowserRouter>
+    <>
       <RouteFocus />
       <Routes>
         <Route element={<AuthLayout />}>
@@ -38,6 +42,10 @@ export default function App() {
           } />
         </Route>
       </Routes>
-    </BrowserRouter>
+    </>
   )
+}
+
+export default function App() {
+  return <BrowserRouter><AppRoutes /></BrowserRouter>
 }

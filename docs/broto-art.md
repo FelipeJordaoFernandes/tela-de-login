@@ -73,3 +73,9 @@ Use case: character-reference. Create the responsive mobile gaze variant of this
 Inspecionadas as sete gerações e sua aplicação no layout. Verificados recorte de rosto, orelhas/folha completas, ausência de corpo/texto/fundo e gestos de cobrir/espiar. Há pequenas variações de desenho entre expressões, próprias de gerações separadas; a troca usa uma transição curta de opacidade. A preferência por movimento reduzido desativa essa transição.
 
 Os PNGs originais de 1254 × 1254 px permanecem no diretório local de gerações do Codex; apenas os WebPs finais fazem parte do repositório. O manifesto local `artifacts/broto-assets.json` identifica cada original e a conversão; não é enviado ao deploy.
+
+## Otimização responsiva — auditoria de 07/10/2026
+
+Os sete arquivos de 512 px foram preservados. Derivadas seis versões de 256 px, por redimensionamento proporcional com Sharp, WebP qualidade 85 e alphaQuality 100: idle, looking-down, covered, peeking, confused e happy. Não houve geração de novas artes ou redesenho. O conjunto mobile tem 80.326 bytes; idle ocupa 12.910 bytes. `picture/source` seleciona essas variantes até 800 px; desktop mantém 512 px.
+
+A expressão idle recebe preload responsivo e prioridade alta. As demais são aquecidas com prioridade baixa após load e dois frames, ou carregadas quando solicitadas antes disso. Enquanto uma expressão não termina de carregar, idle permanece visível para evitar um quadro vazio. As reações e transições foram verificadas novamente no build, incluindo o olhar para baixo em telas menores.
