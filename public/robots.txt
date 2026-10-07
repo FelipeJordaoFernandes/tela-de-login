@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tela-de-login-jet-seven.vercel.app/sitemap.xml
