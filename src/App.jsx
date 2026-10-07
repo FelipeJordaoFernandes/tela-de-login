@@ -10,7 +10,7 @@ function RouteFocus() {
 
   useEffect(() => {
     const titles = { '/': 'Entrar', '/login': 'Entrar', '/cadastro': 'Criar conta' }
-    document.title = `${titles[pathname] || 'Página não encontrada'} | Acesso — Felipe Jordão`
+    document.title = `${titles[pathname] || 'Página não encontrada'} | Acesso`
     if (previousPath.current !== pathname) {
       window.scrollTo({ top: 0, behavior: 'instant' })
       previousPath.current = pathname
