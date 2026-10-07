@@ -9,8 +9,8 @@ Interface de login e registro para o portfólio front-end de Felipe Jordão Fern
 - Produção: [tela-de-login-jet-seven.vercel.app](https://tela-de-login-jet-seven.vercel.app/).
 - Repositório privado: [FelipeJordaoFernandes/tela-de-login](https://github.com/FelipeJordaoFernandes/tela-de-login).
 - Vercel: projeto `tela-de-login`, integrado ao GitHub no time `felipejordaofernandes-projects`, produção configurada para `main`.
-- Base inicial na [PR #1](https://github.com/FelipeJordaoFernandes/tela-de-login/pull/1), ainda sem merge. A produção inicial foi publicada manualmente a partir dessa base.
-- Broto e acesso local na [PR #2](https://github.com/FelipeJordaoFernandes/tela-de-login/pull/2), correções na [PR #3](https://github.com/FelipeJordaoFernandes/tela-de-login/pull/3). Auditoria de qualidade na branch `Ada/auditoria-lighthouse`, derivada de `Ada/correcoes-broto-formulario`, enviada por PR com essa branch como base. Deploys de prévia são separados da produção; merge depende de aprovação explícita.
+- Base inicial na [PR #1](https://github.com/FelipeJordaoFernandes/tela-de-login/pull/1), Broto e acesso local na [PR #2](https://github.com/FelipeJordaoFernandes/tela-de-login/pull/2), correções na [PR #3](https://github.com/FelipeJordaoFernandes/tela-de-login/pull/3) e auditoria na [PR #4](https://github.com/FelipeJordaoFernandes/tela-de-login/pull/4).
+- As quatro PRs foram mescladas em 07/10/2026. Como #2–#4 tinham branches intermediárias como base e foram mescladas depois de #1, a `main` recebeu apenas a base inicial. A branch `Ada/finalizacao-login` reúne os merges e a versão final já aprovada, diretamente para `main`, preservando o histórico. Até essa integração, produção permanece na base inicial; prévia e produção são distintas.
 
 ## Funcionalidades presentes
 
@@ -102,7 +102,7 @@ vercel.json         # Páginas públicas estáticas e fallback SPA
 
 ## Direção visual e artes
 
-Verde, fundos sólidos, espaçamento generoso, cantos arredondados e elevação discreta. A paleta do portfólio foi consultada como referência; os tons desta interface são decisões locais. Plus Jakarta Sans nos títulos e Inter nos campos continuam como combinação candidata, sem transformá-la em padrão pessoal aprovado. “acesso” identifica esta demonstração.
+Verde, fundos sólidos, espaçamento generoso, cantos arredondados e elevação discreta. A paleta do portfólio foi consultada como referência; os tons desta interface são decisões locais. A identidade visual desta tela, com Plus Jakarta Sans nos títulos, Inter nos campos e Broto, foi aprovada pelo usuário em 07/10/2026. Essa aprovação é local ao projeto e não transforma a combinação em padrão global para outros projetos. “acesso” identifica esta demonstração.
 
 Artes de rosto criadas com o imagegen a partir da referência canônica do Broto, com fundo transparente. Os sete WebPs de 512 × 512 px (cerca de 265 KB) foram preservados; seis variantes de 256 × 256 px atendem o layout mobile/tablet. A expressão padrão tem prioridade, e as demais são carregadas depois da página ou ao serem solicitadas. Consulte [referências e prompts](docs/broto-art.md). Nenhuma arte do Portfólio foi alterada.
 
@@ -124,4 +124,4 @@ Não há backend, banco remoto, sessão persistente, recuperação de senha ou p
 
 Por escolha explícita do usuário, a demonstração pública permite indexação: `/login` e `/cadastro` têm canonical de produção, títulos/descrições próprios no HTML, robots válido e sitemap. A indexação efetiva depende dos buscadores. A recuperação de caminho desconhecido usa `noindex` no cliente e o fallback SPA pode responder HTTP 200. Prévias da Vercel podem continuar protegidas e fora de indexação por configuração da hospedagem.
 
-Próximo passo: revisão visual e das PRs; após autorização de merge, sincronizar `main` e validar a produção atualizada.
+Próximo passo: integrar `Ada/finalizacao-login` na `main`; após autorização de merge, validar produção, sincronizar `main` e remover somente as branches concluídas. Não há nova funcionalidade planejada nesta etapa.
