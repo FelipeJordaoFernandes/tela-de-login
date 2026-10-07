@@ -10,7 +10,7 @@ Interface de login e registro para o portfólio front-end de Felipe Jordão Fern
 - Repositório privado: [FelipeJordaoFernandes/tela-de-login](https://github.com/FelipeJordaoFernandes/tela-de-login).
 - Vercel: projeto `tela-de-login`, integrado ao GitHub no time `felipejordaofernandes-projects`, produção configurada para `main`.
 - Base inicial na [PR #1](https://github.com/FelipeJordaoFernandes/tela-de-login/pull/1), Broto e acesso local na [PR #2](https://github.com/FelipeJordaoFernandes/tela-de-login/pull/2), correções na [PR #3](https://github.com/FelipeJordaoFernandes/tela-de-login/pull/3) e auditoria na [PR #4](https://github.com/FelipeJordaoFernandes/tela-de-login/pull/4).
-- As quatro PRs foram mescladas em 07/10/2026. Como #2–#4 tinham branches intermediárias como base e foram mescladas depois de #1, a `main` recebeu apenas a base inicial. A branch `Ada/finalizacao-login` reúne os merges e a versão final já aprovada, diretamente para `main`, preservando o histórico. Até essa integração, produção permanece na base inicial; prévia e produção são distintas.
+- As quatro PRs foram mescladas em 07/10/2026. Como #2–#4 tinham branches intermediárias como base e foram mescladas depois de #1, a `main` recebeu inicialmente apenas a base. A [PR #5](https://github.com/FelipeJordaoFernandes/tela-de-login/pull/5) reúne todos os merges e a versão final aprovada diretamente para `main`, preservando o histórico. Produção acompanha a `main`; deploys de prévia são separados.
 
 ## Funcionalidades presentes
 
@@ -124,4 +124,4 @@ Não há backend, banco remoto, sessão persistente, recuperação de senha ou p
 
 Por escolha explícita do usuário, a demonstração pública permite indexação: `/login` e `/cadastro` têm canonical de produção, títulos/descrições próprios no HTML, robots válido e sitemap. A indexação efetiva depende dos buscadores. A recuperação de caminho desconhecido usa `noindex` no cliente e o fallback SPA pode responder HTTP 200. Prévias da Vercel podem continuar protegidas e fora de indexação por configuração da hospedagem.
 
-Próximo passo: integrar `Ada/finalizacao-login` na `main`; após autorização de merge, validar produção, sincronizar `main` e remover somente as branches concluídas. Não há nova funcionalidade planejada nesta etapa.
+Etapa funcional concluída e identidade visual aprovada. O fechamento verifica a produção e sincroniza `main` antes de remover as branches concluídas. Não há nova funcionalidade planejada; mudanças futuras devem partir de nova solicitação, branch e PR.
