@@ -6,7 +6,6 @@
   display: flex;
   flex-direction: column;
 }
-
 .skipLink {
   position: fixed;
   z-index: 10;
@@ -17,18 +16,8 @@
   border-radius: 8px;
   transform: translateY(-160%);
 }
-
-.skipLink:focus {
-  transform: translateY(0);
-}
-
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-}
-
+.skipLink:focus { transform: translateY(0); }
+.header { display: flex; align-items: center; }
 .brand {
   display: inline-flex;
   align-items: center;
@@ -37,7 +26,6 @@
   font: 600 1.4rem/1 var(--font-heading);
   letter-spacing: -.06em;
 }
-
 .brandIcon {
   display: grid;
   place-items: center;
@@ -47,29 +35,7 @@
   color: var(--color-green);
   border-radius: 13px;
 }
-
-.brandDot {
-  color: var(--color-green);
-  margin-left: -10px;
-}
-
-.portfolioLink {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  min-height: 44px;
-  color: var(--color-muted);
-  font-size: .875rem;
-  text-decoration: none;
-  transition: color .2s;
-}
-
-.portfolioLink:hover {
-  color: var(--color-green);
-  text-decoration: underline;
-}
-
+.brandDot { color: var(--color-green); margin-left: -10px; }
 .main {
   flex: 1;
   display: grid;
@@ -78,74 +44,9 @@
   gap: 70px;
   padding: 65px 0 75px;
 }
-
-.main:focus {
-  outline: none;
-}
-
-.intro {
-  padding-bottom: 12px;
-}
-
-.eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  margin-bottom: 27px;
-  color: var(--color-green);
-  font-size: .65rem;
-  letter-spacing: .13em;
-  font-weight: 600;
-  line-height: 1.6;
-}
-
-.eyebrow > span {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #76b98d;
-}
-
-.intro h2 {
-  font: 500 clamp(2.9rem, 4.7vw, 3.8rem)/1.15 var(--font-heading);
-  letter-spacing: -.065em;
-}
-
-.intro h2 > span {
-  color: var(--color-green);
-}
-
-.description {
-  margin-top: 26px;
-  color: var(--color-muted);
-  font-size: .9375rem;
-  line-height: 1.85;
-}
-
-.signature {
-  display: flex;
-  align-items: center;
-  gap: 13px;
-  color: var(--color-muted);
-  font-size: .8125rem;
-  margin-top: 65px;
-}
-
-.signatureLine {
-  width: 26px;
-  height: 1px;
-  background: #afc4ae;
-}
-
-.signature svg {
-  margin-left: 10px;
-  color: var(--color-green);
-}
-
-.formArea {
-  min-width: 0;
-}
-
+.main:focus { outline: none; }
+.mascotArea { min-width: 0; }
+.formArea { min-width: 0; }
 .footer {
   border-top: 1px solid var(--color-border);
   padding-top: 23px;
@@ -156,145 +57,24 @@
   font-size: .75rem;
   line-height: 1.6;
 }
-
-.footer a {
-  text-decoration: none;
-  color: var(--color-ink);
-}
-
-.footer a:hover {
-  text-decoration: underline;
-}
-
-.demoLabel {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-}
-
-.demoLabel span {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: #71866e;
-}
-
+.footer a { text-decoration: none; color: var(--color-ink); }
+.footer a:hover { text-decoration: underline; }
+.demoLabel { display: flex; align-items: center; gap: 7px; }
+.demoLabel span { width: 5px; height: 5px; border-radius: 50%; background: #71866e; }
 @media (max-width: 1050px) {
-  .shell {
-    padding-inline: 40px;
-  }
-
-  .main {
-    grid-template-columns: 1fr 410px;
-    gap: 36px;
-  }
-
-  .intro h2 {
-    font-size: 3rem;
-  }
-
-  .eyebrow {
-    font-size: .58rem;
-    letter-spacing: .09em;
-  }
-
-  .footer {
-    flex-wrap: wrap;
-  }
-
+  .shell { padding-inline: 40px; }
+  .main { grid-template-columns: 1fr 410px; gap: 36px; }
+  .footer { flex-wrap: wrap; }
 }
-
 @media (max-width: 800px) {
-  .shell {
-    max-width: 600px;
-    padding: 24px 32px;
-  }
-
-  .main {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 35px;
-    padding: 48px 0;
-  }
-
-  .intro {
-    text-align: center;
-    padding: 0;
-  }
-
-  .eyebrow {
-    justify-content: center;
-    font-size: .6rem;
-    margin-bottom: 18px;
-  }
-
-  .intro h2 {
-    font-size: 2.45rem;
-    line-height: 1.2;
-  }
-
-  .intro h2 > span {
-    display: block;
-  }
-
-  .description {
-    margin-top: 16px;
-    font-size: .875rem;
-  }
-
-  .desktopBreak {
-    display: none;
-  }
-
-  .signature {
-    display: none;
-  }
-
-  .footer {
-    justify-content: center;
-    text-align: center;
-    gap: 8px;
-    padding-top: 20px;
-  }
-
+  .shell { max-width: 600px; padding: 24px 32px; }
+  .main { grid-template-columns: minmax(0, 1fr); gap: 24px; padding: 28px 0 40px; }
+  .footer { justify-content: center; text-align: center; gap: 8px; padding-top: 20px; }
 }
-
 @media (max-width: 480px) {
-  .shell {
-    padding: 18px 20px 24px;
-  }
-
-  .main {
-    padding: 36px 0;
-    gap: 28px;
-  }
-
-  .portfolioLink {
-    font-size: .75rem;
-    gap: 3px;
-  }
-
-  .brand {
-    font-size: 1.25rem;
-    gap: 8px;
-  }
-
-  .brandIcon {
-    width: 34px;
-    height: 34px;
-    border-radius: 11px;
-  }
-
-  .brandDot {
-    margin-left: -8px;
-  }
-
-  .intro h2 {
-    font-size: 2.1rem;
-  }
-
-  .eyebrow {
-    font-size: .53rem;
-    letter-spacing: .07em;
-  }
-
+  .shell { padding: 18px 20px 24px; }
+  .main { padding: 24px 0 32px; gap: 18px; }
+  .brand { font-size: 1.25rem; gap: 8px; }
+  .brandIcon { width: 34px; height: 34px; border-radius: 11px; }
+  .brandDot { margin-left: -8px; }
 }

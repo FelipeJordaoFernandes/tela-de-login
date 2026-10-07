@@ -13,7 +13,6 @@ function RouteFocus() {
     document.title = `${titles[pathname] || 'Página não encontrada'} | Acesso — Felipe Jordão`
     if (previousPath.current !== pathname) {
       window.scrollTo({ top: 0, behavior: 'instant' })
-      document.getElementById('page-title')?.focus()
       previousPath.current = pathname
     }
   }, [pathname])
@@ -27,8 +26,8 @@ export default function App() {
       <Routes>
         <Route element={<AuthLayout />}>
           <Route index element={<Navigate to="/login" replace />} />
-          <Route path="login" element={<AuthForm key="login" mode="login" />} />
-          <Route path="cadastro" element={<AuthForm key="cadastro" mode="register" />} />
+          <Route path="login" element={<AuthForm mode="login" />} />
+          <Route path="cadastro" element={<AuthForm mode="register" />} />
           <Route path="*" element={
             <section className={styles.notFound}>
               <p className={styles.eyebrow}>ERRO 404</p>
