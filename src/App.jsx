@@ -10,25 +10,28 @@ function RouteFocus() {
 
   useEffect(() => {
     const titles = { '/': 'Entrar', '/login': 'Entrar', '/cadastro': 'Criar conta' }
-    document.title = `${titles[pathname] || 'Página não encontrada'} | Acesso — Felipe Jordão`
+    const route = pathname.replace(/\/+$/, '') || '/'
+    const knownRoute = Object.hasOwn(titles, route)
+    document.title = `${titles[route] || 'Página não encontrada'} | Acesso`
+    document.querySelector('meta[name="robots"]')?.setAttribute('content', knownRoute ? 'index, follow' : 'noindex, follow')
+    document.querySelector('link[rel="canonical"]')?.setAttribute('href', `https://tela-de-login-jet-seven.vercel.app${route === '/cadastro' ? '/cadastro' : '/login'}`)
     if (previousPath.current !== pathname) {
       window.scrollTo({ top: 0, behavior: 'instant' })
-      document.getElementById('page-title')?.focus()
       previousPath.current = pathname
     }
   }, [pathname])
   return null
 }
 
-export default function App() {
+export function AppRoutes() {
   return (
-    <BrowserRouter>
+    <>
       <RouteFocus />
       <Routes>
         <Route element={<AuthLayout />}>
           <Route index element={<Navigate to="/login" replace />} />
-          <Route path="login" element={<AuthForm key="login" mode="login" />} />
-          <Route path="cadastro" element={<AuthForm key="cadastro" mode="register" />} />
+          <Route path="login" element={<AuthForm mode="login" />} />
+          <Route path="cadastro" element={<AuthForm mode="register" />} />
           <Route path="*" element={
             <section className={styles.notFound}>
               <p className={styles.eyebrow}>ERRO 404</p>
@@ -39,6 +42,10 @@ export default function App() {
           } />
         </Route>
       </Routes>
-    </BrowserRouter>
+    </>
   )
+}
+
+export default function App() {
+  return <BrowserRouter><AppRoutes /></BrowserRouter>
 }
