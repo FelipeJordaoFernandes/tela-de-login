@@ -16,7 +16,7 @@ Todos em `public/broto/`, WebP RGBA de 512 × 512 px, fundo transparente. A conv
 | `confused.webp` | Falha de login, expressão de dúvida | 36.114 bytes |
 | `happy.webp` | Login confirmado, expressão alegre | 36.774 bytes |
 
-O olhar é responsivo porque o card muda de posição. Cadastro usa as mesmas reações dos campos; sua conclusão retorna ao login sem reação de sucesso. O campo Nome mantém a expressão padrão. Textos e mensagens comunicam o resultado independentemente da arte decorativa.
+O olhar é responsivo porque o card muda de posição. Nome e e-mail em foco usam esse olhar. Senhas reagem apenas durante interação com o campo, sem alterar a expressão por preenchimento automático fora de foco. Cadastro inválido também usa a expressão de dúvida; sua conclusão retorna ao login sem reação de sucesso. Textos e mensagens comunicam o resultado independentemente da arte decorativa.
 
 ## Prompts efetivamente utilizados
 

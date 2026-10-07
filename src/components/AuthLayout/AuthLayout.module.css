@@ -68,7 +68,7 @@
 }
 @media (max-width: 800px) {
   .shell { max-width: 600px; padding: 24px 32px; }
-  .main { grid-template-columns: minmax(0, 1fr); gap: 24px; padding: 28px 0 40px; }
+  .main { grid-template-columns: minmax(0, 1fr); align-content: center; gap: 24px; padding: 28px 0 40px; }
   .footer { justify-content: center; text-align: center; gap: 8px; padding-top: 20px; }
 }
 @media (max-width: 480px) {

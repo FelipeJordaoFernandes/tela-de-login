@@ -10,7 +10,7 @@ export default function FormField({ id, label, error, hint, onInteract, type = '
     <div className={styles.field}>
       <label htmlFor={id}>{label}</label>
       <div className={styles.inputWrapper}
-        onFocus={() => onInteract?.(isPassword ? visible ? 'peeking' : 'covered' : type === 'email' ? 'looking' : 'idle')}
+        onFocus={() => onInteract?.(isPassword ? visible ? 'peeking' : 'covered' : 'looking')}
         onBlur={(event) => {
           if (!event.currentTarget.contains(event.relatedTarget)) onInteract?.('idle')
         }}>

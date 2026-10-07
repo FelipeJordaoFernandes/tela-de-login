@@ -10,7 +10,7 @@ Interface de login e registro para o portfólio front-end de Felipe Jordão Fern
 - Repositório privado: [FelipeJordaoFernandes/tela-de-login](https://github.com/FelipeJordaoFernandes/tela-de-login).
 - Vercel: projeto `tela-de-login`, integrado ao GitHub no time `felipejordaofernandes-projects`, produção configurada para `main`.
 - Base inicial na [PR #1](https://github.com/FelipeJordaoFernandes/tela-de-login/pull/1), ainda sem merge. A produção inicial foi publicada manualmente a partir dessa base.
-- Etapa atual: branch `Ada/broto-login-local`, derivada de `Ada/base-login-registro`, enviada por PR com essa branch como base. Deploys de prévia são separados da produção; merge depende de aprovação explícita.
+- Broto e acesso local na [PR #2](https://github.com/FelipeJordaoFernandes/tela-de-login/pull/2), sobre a base inicial. Correções atuais na branch `Ada/correcoes-broto-formulario`, derivada de `Ada/broto-login-local`, enviadas por PR com essa branch como base. Deploys de prévia são separados da produção; merge depende de aprovação explícita.
 
 ## Funcionalidades presentes
 
@@ -19,6 +19,8 @@ Interface de login e registro para o portfólio front-end de Felipe Jordão Fern
 - Cadastro salvo em `localStorage`; ao concluir, redirecionamento para login com e-mail preenchido e mensagem de confirmação.
 - Login validado contra os cadastros locais. Credenciais incorretas exibem erro; credenciais corretas substituem o formulário por boas-vindas e botão Sair.
 - Broto em seis expressões: padrão, olhando para o formulário, olhos cobertos, espiando, dúvida e alegria. Em telas menores, o olhar aponta para baixo, onde fica o card.
+- Nome e e-mail em foco fazem Broto olhar para o card; cadastro inválido também provoca dúvida. Preenchimento automático fora de foco preserva a expressão atual, e a abertura da tela mantém o olhar padrão.
+- Em celular/tablet com layout empilhado, a distância entre Broto e card é constante entre login e cadastro, inclusive em telas altas. Títulos das páginas usam apenas o nome Acesso.
 - Troca de formulários com deslizamento horizontal, altura animada do card e transição para boas-vindas. Respeita a preferência por movimento reduzido.
 - Mostrar/ocultar senha, labels, autocomplete, erros associados aos campos, foco no primeiro erro, envio por teclado e foco após navegação.
 - Layout responsivo, link para pular ao conteúdo, fontes locais, títulos por tela, `pt-BR`, descrição, Open Graph e favicon próprio.
@@ -91,6 +93,8 @@ Artes de rosto criadas com o imagegen a partir da referência canônica do Broto
 Em 07/10/2026: lint, seis testes automatizados de armazenamento/credenciais, build e `git diff --check`. O roteiro local Playwright no Edge/Chromium verifica cadastro → redirecionamento → reload → login incorreto/correto → boas-vindas → Sair, cadastro duplicado, dados inválidos, armazenamento bloqueado, expressões do Broto e animações de posição/altura.
 
 Login e cadastro conferidos em **320, 390, 768, 1024 e 1440 px**, com abertura direta/reload, teclado, foco, movimento reduzido, imagens carregadas e ausência de transbordamento horizontal. Nenhum erro de console ou envio de credenciais observado no roteiro. Evidências locais em `artifacts/`, ignoradas pelo Git e pelo deploy.
+
+Correções posteriores verificadas também com preenchimento automático simulado sem foco, foco/edição de Nome, falhas de cadastro e alturas de viewport 844/1180/1366 px para comparar a distância entre mascote e card. Conferidos títulos de login, cadastro, boas-vindas e página não encontrada, sem nome pessoal.
 
 Essas verificações não equivalem a uma auditoria WCAG completa, teste com leitores de tela ou cobertura de todos os navegadores. O fluxo do build é validado localmente; eventuais restrições de acesso às prévias remotas devem ser registradas separadamente.
 

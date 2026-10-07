@@ -32,7 +32,7 @@ export default function AuthForm({ mode }) {
   }, [])
 
   useEffect(() => {
-    document.title = `${user ? 'Boas-vindas' : isRegister ? 'Criar conta' : 'Entrar'} | Acesso — Felipe Jordão`
+    document.title = `${user ? 'Boas-vindas' : isRegister ? 'Criar conta' : 'Entrar'} | Acesso`
   }, [user, isRegister])
 
   function handleChange(event) {
@@ -41,8 +41,11 @@ export default function AuthForm({ mode }) {
     setMessage('')
     setRegistrationNotice(false)
     if (submitted) setErrors(validateAuth(nextValues, isRegister))
-    const passwordField = ['password', 'confirmPassword'].includes(event.target.name)
-    onReaction(passwordField ? event.target.type === 'password' ? 'covered' : 'peeking' : event.target.name === 'email' ? 'looking' : 'idle')
+    // Preenchimento automático pode disparar input sem interação com o campo.
+    if (event.target === document.activeElement) {
+      const passwordField = ['password', 'confirmPassword'].includes(event.target.name)
+      onReaction(passwordField ? event.target.type === 'password' ? 'covered' : 'peeking' : 'looking')
+    }
   }
 
   async function handleSubmit(event) {
@@ -55,7 +58,7 @@ export default function AuthForm({ mode }) {
     const firstError = Object.keys(nextErrors)[0]
     if (firstError) {
       formRef.current.elements.namedItem(firstError)?.focus()
-      onReaction(isRegister ? 'idle' : 'confused')
+      onReaction('confused')
       return
     }
     setBusy(true)
@@ -81,7 +84,7 @@ export default function AuthForm({ mode }) {
       } else {
         setMessage(text)
       }
-      onReaction(isRegister ? 'idle' : 'confused')
+      onReaction('confused')
     } finally {
       if (currentOperation === operation.current) setBusy(false)
     }
