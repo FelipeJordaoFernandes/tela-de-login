@@ -1,0 +1,159 @@
+.card {
+  background: #fff;
+  border: 1px solid #e3e8df;
+  border-radius: 24px;
+  padding: 31px 35px 26px;
+  box-shadow: 0 12px 45px -20px #29402e2b, 0 3px 10px -6px #29402e12;
+}
+
+.navigation {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 4px;
+  gap: 4px;
+  border-radius: 10px;
+  background: #f0f3ed;
+}
+
+.navigation a {
+  display: flex;
+  min-height: 40px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 7px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: .8125rem;
+  color: var(--color-muted);
+  transition: color .2s, background .2s;
+}
+
+.navigation a:hover {
+  color: var(--color-green);
+}
+
+.navigation .active {
+  background: white;
+  color: var(--color-green);
+  box-shadow: 0 1px 4px #20282412;
+}
+
+.heading {
+  margin: 31px 0 27px;
+}
+
+.heading h1 {
+  font: 600 1.55rem/1.35 var(--font-heading);
+  letter-spacing: -.035em;
+}
+
+.heading h1:focus {
+  outline: none;
+}
+
+.heading > p {
+  color: var(--color-muted);
+  font-size: .875rem;
+  line-height: 1.7;
+  margin-top: 9px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 49px;
+  margin-top: 5px;
+  padding: 12px;
+  background: var(--color-green);
+  color: white;
+  border: 0;
+  border-radius: 9px;
+  font-weight: 500;
+  font-size: .875rem;
+  transition: background .2s, transform .2s;
+}
+
+.submit:hover {
+  background: var(--color-green-hover);
+}
+
+.submit:active {
+  transform: translateY(1px);
+}
+
+.switchPrompt {
+  text-align: center;
+  color: var(--color-muted);
+  font-size: .8125rem;
+  line-height: 1.7;
+  margin: 25px 0 26px;
+}
+
+.switchPrompt a {
+  color: var(--color-green);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.switchPrompt a:hover {
+  text-decoration: underline;
+}
+
+.demoNote {
+  padding-top: 20px;
+  border-top: 1px solid #e9ede6;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 8px;
+  color: var(--color-muted);
+}
+
+.demoNote svg {
+  margin-top: 2px;
+}
+
+.demoNote p {
+  font-size: .75rem;
+  line-height: 1.7;
+}
+
+.success {
+  display: flex;
+  gap: 9px;
+  background: var(--color-soft);
+  color: #245238;
+  border-radius: 9px;
+  padding: 13px;
+  margin-top: 20px;
+}
+
+.success p {
+  font-size: .8125rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 24px 22px;
+    border-radius: 20px;
+  }
+
+  .heading {
+    margin: 26px 0 24px;
+  }
+
+  .heading h1 {
+    font-size: 1.35rem;
+  }
+
+}
