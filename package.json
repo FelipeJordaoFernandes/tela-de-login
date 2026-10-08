@@ -10,6 +10,7 @@
     "test": "node --test tests/*.test.js",
     "audit:lighthouse": "node scripts/audit-lighthouse.mjs",
     "audit:a11y": "node scripts/audit-accessibility.mjs",
+    "social:image": "node scripts/generate-social-image.mjs",
     "preview": "vite preview"
   },
   "dependencies": {

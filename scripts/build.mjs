@@ -22,7 +22,9 @@ for (const route of ['login', 'cadastro']) {
     .replace(/(<link rel="canonical" href=")[^"]*/, '$1' + canonical)
     .replace(/(<meta property="og:title" content=")[^"]*/, '$1' + title + ' | Acesso')
     .replace(/(<meta property="og:description" content=")[^"]*/, '$1' + description)
-    .replace('</head>', `<meta property="og:url" content="${canonical}" /></head>`)
+    .replace(/(<meta property="og:url" content=")[^"]*/, '$1' + canonical)
+    .replace(/(<meta name="twitter:title" content=")[^"]*/, '$1' + title + ' | Acesso')
+    .replace(/(<meta name="twitter:description" content=")[^"]*/, '$1' + description)
   await mkdir(`dist/${route}`, { recursive: true })
   await writeFile(`dist/${route}/index.html`, page)
 }

@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <title>Capa social — Acesso</title>
+    <style>
+      @font-face { font-family: Inter; src: url('{{inter}}') format('woff2'); font-weight: 100 900; }
+      @font-face { font-family: Jakarta; src: url('{{jakarta}}') format('woff2'); font-weight: 600; }
+      * { box-sizing: border-box; }
+      body { margin: 0; width: 1200px; height: 630px; background: #f5f7f3; color: #202824; font-family: Inter, sans-serif; }
+      main { position: absolute; inset: 42px; border: 1px solid #dce3dc; border-radius: 36px; background: #fff; box-shadow: 0 12px 32px #203e2810; overflow: hidden; }
+      .content { position: absolute; left: 58px; top: 46px; bottom: 44px; width: 570px; }
+      .brand { display: flex; align-items: center; gap: 14px; font: 600 36px/1 Jakarta, sans-serif; letter-spacing: -1.8px; }
+      .brand svg { width: 46px; height: 46px; }
+      .brand .dot { color: #2e6646; }
+      h1 { margin: 72px 0 22px; font: 600 56px/1.16 Jakarta, sans-serif; letter-spacing: -2.6px; }
+      .description { margin: 0; color: #606b63; font-size: 24px; line-height: 1.5; }
+      .caption { position: absolute; bottom: 0; margin: 0; color: #2e6646; font-size: 18px; font-weight: 500; }
+      .portrait { position: absolute; right: 40px; top: 92px; width: 380px; height: 380px; display: grid; place-items: center; border-radius: 50%; background: #edf3ed; }
+      .portrait img { width: 320px; height: 320px; object-fit: contain; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="content">
+        <div class="brand">{{logo}}<span>acesso<span class="dot">.</span></span></div>
+        <h1>Login e cadastro.<br />Com o Broto.</h1>
+        <p class="description">Uma experiência simples,<br />acolhedora e interativa.</p>
+        <p class="caption">Projeto de front-end</p>
+      </div>
+      <div class="portrait"><img src="{{broto}}" alt="Rosto do mascote Broto sorrindo" /></div>
+    </main>
+  </body>
+</html>

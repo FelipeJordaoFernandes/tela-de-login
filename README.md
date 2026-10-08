@@ -24,6 +24,7 @@ Interface de login e registro para o portfólio front-end de Felipe Jordão Fern
 - Troca de formulários com deslizamento horizontal, altura animada do card e transição para boas-vindas. Respeita a preferência por movimento reduzido.
 - Mostrar/ocultar senha, labels, autocomplete, erros associados aos campos, foco no primeiro erro, envio por teclado e foco após navegação.
 - Layout responsivo, link para pular ao conteúdo, fontes locais, títulos por tela, `pt-BR`, descrição, Open Graph e favicon próprio.
+- Capa social com Broto em PNG de 1200 × 630 px, indicada por Open Graph e Twitter Cards no HTML inicial de `/`, `/login` e `/cadastro`.
 - Cabeçalho simplificado, sem o botão “Voltar ao portfólio”.
 
 ## Contrato do armazenamento
@@ -59,6 +60,8 @@ npm run preview
 ```
 
 `preview` serve `dist`; execute o build antes. Não são necessárias variáveis de ambiente ou chaves.
+
+A imagem de compartilhamento fica em `public/social/acesso-broto-v1.png`, pronta para o deploy. Para regenerar a composição usando o Broto e as fontes locais existentes, execute `npm run social:image` com Edge instalado (ou configure `AUDIT_BROWSER`/`AUDIT_BROWSER_PATH`). A geração é manual e não é executada pelo build da Vercel. Fonte e decisões em [Imagem social](docs/imagem-social.md).
 
 O build gera HTML estático de `/login` e `/cadastro` com `StaticRouter` e `renderToString`, reutilizando os componentes React. O navegador hidrata essas páginas e mantém a navegação SPA. A Vercel e o preview local servem os HTMLs correspondentes; nenhuma função de servidor é publicada. O HTML contém apenas o formulário público vazio, sem cadastros ou dados do navegador. Os campos e o envio permanecem desabilitados até o React carregar; sem JavaScript, uma mensagem explica como habilitar o fluxo local. O CSS pequeno é incorporado ao HTML para antecipar a primeira renderização.
 
